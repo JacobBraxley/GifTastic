@@ -13,7 +13,7 @@ function addNewButton(userInput = $("#newInput").val().trim(), add = true) {
 }
 
 function displayGiphyResponse(response, replace = true) {
-    if(replace) {
+    if (replace) {
         $("#displayArea").empty();
     }
 
@@ -41,9 +41,9 @@ function displayGiphyResponse(response, replace = true) {
 function giphySearch(source) {
     let searchTerm = $(this).attr("data-interest");
     searchTerm = searchTerm.replace(/ /g, "+"); //Replace any spaces with pluses.
-    
+
     let replace = true;
-    if(searchTerm === lastSearch) {
+    if (searchTerm === lastSearch) {
         offset += 10;
         replace = false;
     } else {
@@ -51,14 +51,14 @@ function giphySearch(source) {
         offset = 0;
     }
 
-    
+
 
     $.ajax({
         url: `https://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=svKQhrA5X2P0e8BNptFNyEWf87jROpZl&limit=10&offset=${offset}`,
         method: "GET"
     }).then(function (response) {
         console.log(response);
-        displayGiphyResponse(response, replace)
+        displayGiphyResponse(response, replace);
     });
 }
 
@@ -81,14 +81,14 @@ function stopPulse() {
 
 topics.forEach(element => {
     addNewButton(element, false);
-})
+});
 
 $("#newButton").on("click", stopPulse);
-$("#submitInterest").on("click", function() {
+$("#submitInterest").on("click", function () {
     addNewButton($("#newInput").val().trim());
 });
 $(document).on("click", '.giphyFetcher', giphySearch);
-$(document).on('click', '.gif', function() {
+$(document).on('click', '.gif', function () {
     startOrStopGiphy(this);
 });
 
