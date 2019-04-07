@@ -1,28 +1,58 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
-  </head>
-  <body>
-    <div id="searchButtons"></div>
-    <div id="addArea">Add a search item: 
-      <input id="newInput" type="text"></input>
-      <input id="newButton" type="button"></input>
+<head>
+  <title>Giphy Project</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Materialize CSS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div id="searchButtons">
+      <button class="btn waves-effect deep-purple lighten-3"><i class="material-icons left">gif</i>Example</button>
+      <a id="newButton" href="#addNewInterest" class="btn-floating waves-effect red pulse modal-trigger"><i
+          class="large material-icons">add</i></a>
+
+      <!-- fixed-action-btn for a button menu -->
+      <!-- btn-flat if you don't want it to look like a button until hover. -->
+
     </div>
-    <div id="displayArea"></div>
-    
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="assets/javascript/script.js"></script>
-  </body>
+
+    <div id="addNewInterest" class="modal">
+      <div class="modal-content lessPaddingBottom">
+        <div class="row">Please add your own interests: </div>
+        <form class="col s12">
+          <div class="input-field">
+            <input id="newInput" type="text" class="validate">
+            <label for="newInput">Interest</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <a id="submitInterest" href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+      </div>
+    </div>
+    <hr>
+    <div id="displayArea"></div> <!-- consider responsive-img -->
+  </div>
+
+  <!-- Preloaders are cool.-->
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="assets/javascript/script.js"></script>
+</body>
+
 </html>

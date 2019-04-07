@@ -6,6 +6,7 @@
 const interestArray = [];
 
 function addNewButton() {
+    $("#newButton").removeClass("pulse"); // Users don't need a pulse after its been used.
     const userInput = $("#newInput").val().trim();
     interestArray.push(userInput);
 
@@ -39,3 +40,7 @@ function startOrStopGiphy(item) {
 $("#newButton").on("click", addNewButton);
 $(".giphyFetcher").on("click", giphySearch);
 $(".giphyItem").on("click", startOrStopGiphy);
+
+$(document).ready(function(){
+    $('.modal').modal();
+  });
