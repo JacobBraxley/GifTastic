@@ -3,7 +3,7 @@
 //Each button will fetch from giphy to to populate 10 images.
 //An initial array of data.
 //An area to add new buttons.
-const interestArray = [];
+const interestArray = ["Bugs Bunny", "Tweety", "Tasmanian Devil", "Daffy Duck", "Porky Pig", "Marvin the Martian", "Elmer Fudd", "Sylvester", "Pepe Le Pew"];
 
 function addNewButton() {
     $("#newButton").removeClass("pulse"); // Users don't need a pulse after its been used.
