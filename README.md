@@ -32,7 +32,8 @@ N/A
 
 ## Built With
 
-* [Bootstrap](https://getbootstrap.com/) - A toolkit used.
+* [Materialize CSS](https://materializecss.com/) - A toolkit used.
+* [Giphy] (https://giphy.com/) - The source of the gifs.
 
 ## Contributing
 

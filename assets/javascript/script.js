@@ -1,12 +1,12 @@
-const interestArray = ["Bugs Bunny", "Tweety", "Tasmanian Devil", "Daffy Duck", "Porky Pig", "Marvin the Martian", "Elmer Fudd", "Sylvester", "Pepe Le Pew"];
+const topics = ["Bugs Bunny", "Tweety", "Tasmanian Devil", "Daffy Duck", "Porky Pig", "Marvin the Martian", "Elmer Fudd", "Sylvester", "Pepe Le Pew"];
 
 function addNewButton(userInput = $("#newInput").val().trim(), add = true) {
     if (add) {
-        interestArray.push(userInput);
+        topics.push(userInput);
     }
 
     const btnDom = $(`<button class="btn waves-effect deep-purple lighten-3 giphyFetcher" data-interest='${userInput}'><i class="material-icons left">gif</i>${userInput}</button>`);
-    btnDom.insertBefore($("#newButton"));
+    btnDom.insertBefore($("#newButton")); //Remaking the buttons is dumb.  Lets just add the new one.
 }
 
 function displayGiphyResponse(response) {
@@ -24,7 +24,7 @@ function displayGiphyResponse(response) {
                   class="gif">
               <span class="card-title">${counter++}</span>
             </div>
-            <div class="card-content">${element.title}</div>
+            <div class="card-content">${element.title}<br>Rating: ${element.rating}</div>
           </div>
         </div>`;
 
@@ -40,6 +40,7 @@ function giphySearch(source) {
         url: `https://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=svKQhrA5X2P0e8BNptFNyEWf87jROpZl&limit=10`,
         method: "GET"
     }).then(function (response) {
+        console.log(response);
         displayGiphyResponse(response)
     });
 }
@@ -61,7 +62,7 @@ function stopPulse() {
     $("#newButton").removeClass("pulse"); // Users don't need a pulse after its been used.
 }
 
-interestArray.forEach(element => {
+topics.forEach(element => {
     addNewButton(element, false);
 })
 
