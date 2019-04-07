@@ -1,5 +1,8 @@
 const topics = ["Bugs Bunny", "Tweety", "Tasmanian Devil", "Daffy Duck", "Porky Pig", "Marvin the Martian", "Elmer Fudd", "Sylvester", "Pepe Le Pew"];
 
+let lastSearch;
+let offset = 0;
+
 function addNewButton(userInput = $("#newInput").val().trim(), add = true) {
     if (add) {
         topics.push(userInput);
@@ -9,9 +12,12 @@ function addNewButton(userInput = $("#newInput").val().trim(), add = true) {
     btnDom.insertBefore($("#newButton")); //Remaking the buttons is dumb.  Lets just add the new one.
 }
 
-function displayGiphyResponse(response) {
-    $("#displayArea").empty();
-    let counter = 1;
+function displayGiphyResponse(response, replace = true) {
+    if(replace) {
+        $("#displayArea").empty();
+    }
+
+    let counter = offset + 1;
     response.data.forEach(element => {
         let giphyDom = `
         <div class="col s12 m4 l3">
@@ -35,13 +41,24 @@ function displayGiphyResponse(response) {
 function giphySearch(source) {
     let searchTerm = $(this).attr("data-interest");
     searchTerm = searchTerm.replace(/ /g, "+"); //Replace any spaces with pluses.
+    
+    let replace = true;
+    if(searchTerm === lastSearch) {
+        offset += 10;
+        replace = false;
+    } else {
+        lastSearch = searchTerm;
+        offset = 0;
+    }
+
+    
 
     $.ajax({
-        url: `https://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=svKQhrA5X2P0e8BNptFNyEWf87jROpZl&limit=10`,
+        url: `https://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=svKQhrA5X2P0e8BNptFNyEWf87jROpZl&limit=10&offset=${offset}`,
         method: "GET"
     }).then(function (response) {
         console.log(response);
-        displayGiphyResponse(response)
+        displayGiphyResponse(response, replace)
     });
 }
 
